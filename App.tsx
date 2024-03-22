@@ -1,10 +1,19 @@
-import UsersView from './views/Users';
-import log from './utils/log';
+import UsersView from './screens/Users';
 import DeviceInfo from 'react-native-device-info';
-import { Alert, StatusBar } from 'react-native';
+import { Alert, Platform, StatusBar } from 'react-native';
 import { useEffect } from 'react';
-import waitForTimeout from './utils/waitForTimeout';
 import { primary } from './theme/palette';
+import Test from './screens/Test';
+import SplashScreen from 'react-native-splash-screen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Layout from './components/Layout';
+
+
+
+const Stack = createNativeStackNavigator();
+
+
 
 const App = () => {
   const deviceId = DeviceInfo.getUniqueIdSync()
@@ -27,14 +36,33 @@ const App = () => {
   };
 
   useEffect( () => {
-    // waitForTimeout(5000, showAlert)
+    Platform.OS==='android' && SplashScreen.hide()
   }, [] )
   
 
   return (
     <>
     <StatusBar backgroundColor={primary.main} />
-    <UsersView />
+
+    <NavigationContainer>
+    <Layout>
+    <Stack.Navigator 
+    screenOptions={{headerShown: false}}
+    initialRouteName='home'
+    >
+    <Stack.Screen 
+    name={'home'}
+    component={UsersView}
+    />
+
+    <Stack.Screen 
+    name={'test'}
+    component={Test}
+    options={{animation: 'slide_from_left'}}
+    />
+    </Stack.Navigator>
+    </Layout>
+    </NavigationContainer>
     </>
   )
 };

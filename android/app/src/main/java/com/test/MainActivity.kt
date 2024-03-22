@@ -5,7 +5,19 @@ import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 
+//react-native-splash-screen packages
+import android.os.Bundle
+import org.devio.rn.splashscreen.SplashScreen
+
 class MainActivity : ReactActivity() {
+
+  /**
+   * Called when the activity is first created.
+   */
+  override fun onCreate(savedInstanceState: Bundle?) {
+    SplashScreen.show(this) // Show splash screen when activity is created
+    super.onCreate(savedInstanceState)
+  }
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
@@ -19,4 +31,5 @@ class MainActivity : ReactActivity() {
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+
 }

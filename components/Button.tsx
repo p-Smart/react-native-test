@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { ActivityIndicator, ColorValue, GestureResponderEvent, StyleProp, Text, TouchableNativeFeedback, View, ViewStyle } from 'react-native';
 import { neutral, primary } from '../theme/palette';
 
 interface IButton {
-    title: string | JSX.Element;
+    title?: string;
     disabled?: boolean;
     loading?: boolean;
     loadingText?: string;
@@ -11,7 +11,7 @@ interface IButton {
     style?: StyleProp<ViewStyle>;
     fullWidth?: boolean;
 }
-const Button = (props: IButton) => {
+const Button = (props: PropsWithChildren<IButton>) => {
   const disabled = props.loading || props.disabled
 
 
@@ -54,7 +54,9 @@ const Button = (props: IButton) => {
         >
         {
         !props.loading ?
-        <Text 
+        (
+          props.title ?
+        <Text
         style={{
             color: textColor,
             fontWeight: '600',
@@ -63,6 +65,8 @@ const Button = (props: IButton) => {
         >
         {props.title}
         </Text> :
+        props.children
+        ) :
 
         <View 
         style={{
