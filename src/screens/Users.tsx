@@ -2,10 +2,10 @@ import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import log from '../utils/log';
-import Button from '../components/Button';
 import { grey } from '../theme/palette';
 import Skeleton from '../components/Skeleton';
 import { ScreenProps } from './types';
+import Button from '../components/Button';
 
 const UsersView: ScreenProps<'Users'> = (props) => {
     const [loading, setLoading] = useState(false)
@@ -43,7 +43,6 @@ const UsersView: ScreenProps<'Users'> = (props) => {
     ]
     const [list, setList] = useState(initialList)
     const scrollViewRef = useRef<ScrollView>(null)
-    
 
     const fetchData = async () => {
         try{
@@ -80,7 +79,7 @@ const UsersView: ScreenProps<'Users'> = (props) => {
         ref={scrollViewRef}
         style={{
             paddingHorizontal: 10,
-            marginVertical: 10
+            marginVertical: 10,
         }}
         >
         {
@@ -139,7 +138,7 @@ const User = ({item, index}: IUser) => {
             flexDirection: 'row',
             alignItems: 'center',
             gap: 10,
-            marginBottom: 20
+            marginBottom: 20,
         }}
         >
         <Text>

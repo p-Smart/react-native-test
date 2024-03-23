@@ -1,0 +1,4 @@
+To Clean Gradle:
+cd android && ./gradlew clean
+
+

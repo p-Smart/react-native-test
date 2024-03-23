@@ -55,7 +55,8 @@ const Layout: React.FC<PropsWithChildren<ILayout>> = ({
       flex: 1,
       gap: 20,
       paddingTop: headerLayout.height,
-      paddingBottom: navBottomLayout.height-20
+      paddingBottom: navBottomLayout.height-20,
+      backgroundColor: 'red'
     }}
     >
     <View
@@ -85,15 +86,14 @@ const Layout: React.FC<PropsWithChildren<ILayout>> = ({
       }}
       />
       <Text style={{color: '#fff', fontSize: 25, fontWeight: '600'}}>
-        Users View
+        Native App
       </Text>
     </View>
 
 
     <View
     style={{
-        flex: 1,
-        backgroundColor: neutral[50],
+        flex: 1
     }}
     >
     {children}
@@ -129,7 +129,7 @@ const Layout: React.FC<PropsWithChildren<ILayout>> = ({
             borderRadius: 3
         }}
         onClick={() => {
-            navigate(props.route, {name: props.title})
+            navigate(props.route)
         }}
         >
         <Icon
