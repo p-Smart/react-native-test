@@ -1,3 +1,6 @@
+Using NPM for this project
+
+
 To Clean Gradle:
 cd android && ./gradlew clean
 
